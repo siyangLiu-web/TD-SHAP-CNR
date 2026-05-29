@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-Active-success)
 
-`tdshap-cnr` 高鲁棒性的 Python 工具包，专为多维连续时间序列（如多模态生理信号、脑电、金融指标等）设计，用于**非线性动态因果网络的重构与全景拓扑评估**。
+`tdshap-cnr` 是一个高鲁棒性的 Python 工具包，专为多维连续时间序列（如多模态生理信号、脑电、金融指标等）设计，用于**非线性动态因果网络的重构与全景拓扑评估**。
 
 本工具包基于**时间延迟嵌入（Time-Delay Embedding）**、**随机森林（Random Forest）**、**SHAP 贡献度分解**以及**自适应 K-Means 网络修剪**算法，能够精准追踪时间序列系统在演化过程中的网络拓扑突变与单通路极值爆发机制。
 
