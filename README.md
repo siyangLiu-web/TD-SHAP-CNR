@@ -24,18 +24,235 @@
 推荐使用虚拟环境进行安装（要求 Python 3.8+）。
 
 ### 从源码本地安装 (开发模式)
+方式 A：通过 Git 克隆（推荐）
+```bash
+# 克隆本仓库
+git clone https://github.com/siyangLiu-web/TD-SHAP-CNR.git
+cd tdshap_cnr
+```
+方式 B：直接解压
+如果是本地传输的压缩包，请将其解压，然后使用终端进入该项目所在的根目录（即包含 pyproject.toml 文件的那个文件夹）
+
+---
+
+# 创建虚拟环境
+
+请在项目根目录下打开终端，并执行以下命令（可自行命名环境）：
 
 ```bash
-# 1. 克隆本仓库
-git clone [https://github.com/yourusername/tdshap_cnr.git](https://github.com/yourusername/tdshap_cnr.git)
-cd tdshap_cnr
-
-# 2. 安装依赖并以可编辑模式安装包
-pip install -e .
-
+python -m venv venv
 ```
 
-*(注：安装完成后，您可以在系统的任何 Python 脚本中直接 `import tdshap_cnr`)*
+执行完成后，项目目录中会新增一个名为 `venv` 的文件夹，其中包含一个独立、纯净的 Python 运行环境。
+
+---
+
+# 激活虚拟环境
+
+根据您的操作系统，执行对应命令。
+
+## Windows（CMD 命令提示符）
+
+```dos
+venv\Scripts\activate.bat
+```
+
+## Windows（PowerShell）
+
+```powershell
+venv\Scripts\Activate.ps1
+```
+
+## macOS / Linux
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+## 激活成功标志
+
+激活成功后，终端提示符最左侧会出现：
+
+```bash
+(venv)
+```
+
+例如：
+
+```bash
+(venv) D:\TD-SHAP-CNR>
+```
+
+此后所有安装操作，都必须在该虚拟环境中进行。
+
+---
+
+# 安装 TD-SHAP-CNR 工具包
+
+在已经激活虚拟环境、并位于项目根目录的终端中执行：
+
+```bash
+pip install -e .
+```
+
+---
+
+## 命令说明
+
+### `pip install`
+
+Python 的标准包安装命令。
+
+### `-e`
+
+代表 **editable（可编辑模式）**。
+该模式：
+
+* 修改 `src/` 目录中的源码后
+* 不需要重新安装工具包
+* 修改会立即生效
+
+### `.`
+
+代表“当前目录”。
+
+即让 `pip` 自动读取当前目录中的：
+
+* `pyproject.toml`
+* `setup.py`
+
+并完成依赖安装。
+
+---
+
+# 等待依赖自动安装
+
+系统将自动安装工具包及其依赖项，包括：
+
+* `numpy`
+* `pandas`
+* `scikit-learn`
+* `shap`
+* `networkx`
+* `ssqueezepy`
+* 以及其它科学计算库
+
+安装完成后，如果终端出现类似信息：
+
+```bash
+Successfully installed tdshap-cnr
+```
+
+则说明安装成功。
+
+---
+
+# 验证安装是否成功
+
+在终端中输入：
+
+```bash
+python
+```
+
+进入 Python 交互式环境后（终端会出现 `>>>`），逐行输入以下代码：
+
+```python
+# 1. 导入工具包
+import tdshap_cnr
+
+# 2. 查看版本号
+print(tdshap_cnr.__version__)
+
+# 3. 导入核心流水线类
+from tdshap_cnr import CausalNetworkPipeline, PipelineConfig
+
+# 4. 输出成功提示
+print("恭喜！tdshap_cnr 工具包已成功安装！")
+```
+
+---
+
+# 安装成功示例
+
+如果看到如下输出：
+
+```python
+0.1.0
+恭喜！tdshap_cnr 工具包已成功安装！
+```
+
+并且整个过程中没有出现任何报错，则说明：
+
+* 虚拟环境配置成功
+* 工具包安装成功
+* 核心模块导入成功
+* 当前开发环境已经完全可用
+
+---
+
+# 退出 Python 环境
+
+验证完成后，可输入：
+
+```python
+exit()
+```
+
+并按回车退出 Python 交互式环境。
+
+---
+
+# 常见问题（FAQ）
+
+## 1. 提示 `python` 命令不存在
+
+请确认：
+
+* 已正确安装 Python
+* 已勾选 “Add Python to PATH”
+
+可通过以下命令检查：
+
+```bash
+python --version
+```
+
+---
+
+## 2. PowerShell 无法激活虚拟环境
+
+若出现权限错误，可执行：
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+然后重新激活虚拟环境。
+
+---
+
+## 3. `pip install -e .` 失败
+
+请确认：
+
+* 当前目录下存在 `pyproject.toml`
+* 已激活虚拟环境
+* Python 版本符合要求
+
+推荐使用：
+
+```bash
+python --version
+```
+
+检查版本。
+
+
+
+*(注：由于您最初是使用 pip install -e . (带 -e 参数) 安装的，这就意味着无论您在电脑的哪个新项目中调用这个工具包，只要您修改了原本源码文件夹 (tdshap_cnr_project\src\tdshap_cnr\...) 中的任何代码，这些修改都会生效，应用于所有正在使用这个虚拟环境的新项目中，无需重新安装！)*
 
 ---
 
