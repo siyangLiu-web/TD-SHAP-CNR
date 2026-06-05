@@ -27,7 +27,7 @@
 
 ```bash
 # 1. 克隆本仓库
-git clone [https://github.com/yourusername/tdshap_cnr.git](https://github.com/yourusername/tdshap_cnr.git)
+git clone https://github.com/siyangLiu-web/TD-SHAP-CNR.git
 cd tdshap_cnr
 
 # 2. 安装依赖并以可编辑模式安装包
